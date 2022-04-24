@@ -148,9 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // the Tetromino withour rotations
     const upNextTetrominos = [
         [1, displayWidth+1, displayWidth*2+1, 2], //l
-        [0, displayWidth, displayWidth+1, displayWidth*2+1], //z
-        [1, displayWidth, displayWidth+1, displayWidth+2], //t
-        [0, 1, displayWidth, displayWidth+1], //o
+        [1, displayWidth+1, displayWidth+2, displayWidth*2+2], //z
+        [displayWidth+1, displayWidth*2, displayWidth*2+1, displayWidth*2+2], //t
+        [displayWidth+1, displayWidth+2, displayWidth*2+1, displayWidth*2+2], //o
         [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1] //i
     ]
 
