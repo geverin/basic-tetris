@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'orange',
         'black',
         'red',
+        'pink',
         'purple',
         'green',
         'blue'
@@ -35,6 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
         [width+1, width+2, width*2, width*2+1],
         [0, width, width+1, width*2+1]
     ]
+    const zrTetromino = [
+        [width, width+1, width*2+1, width*2+2],
+        [1, width, width+1, width*2],
+        [width, width+1, width*2+1, width*2+2],
+        [1, width, width+1, width*2]
+    ]
     const tTetrominos = [
         [1, width, width+1, width+2],
         [1, width+1, width+2, width*2+1],
@@ -54,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         [width, width+1, width+2, width+3]
     ]
 
-    const theTetrominos = [lTetromino, lrTetromino, zTetromino, tTetrominos, oTetromino, iTetromino]
+    const theTetrominos = [lTetromino, lrTetromino, zTetromino, zrTetromino, tTetrominos, oTetromino, iTetromino]
 
     let currentPosition = 4
     let currentRotation = 0
@@ -168,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         [1, displayWidth+1, displayWidth*2+1, 2], //l
         [1, displayWidth+1, displayWidth*2+1, 0], //le
         [1, displayWidth+1, displayWidth+2, displayWidth*2+2], //z
+        [2, displayWidth+1, displayWidth+2, displayWidth*2+1], //zr
         [displayWidth+1, displayWidth*2, displayWidth*2+1, displayWidth*2+2], //t
         [displayWidth+1, displayWidth+2, displayWidth*2+1, displayWidth*2+2], //o
         [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1] //i
@@ -188,6 +196,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //add functionality to the button
     startBtn.addEventListener('click', () => {
+        buttonTrigger()
+    })
+
+    //button trigger
+    function buttonTrigger() {
         if (timerId) {
             clearInterval(timerId)
             timerId = null
@@ -198,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nextRandom = Math.floor(Math.random()*theTetrominos.length)
             displayShape()
         }
-    })
+    }
 
     //add score
     function addScore() {
